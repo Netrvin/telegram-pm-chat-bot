@@ -15,9 +15,9 @@ Telegram Private Message Chat Bot
 打开`config.json`并配置
 ```json
 {
-    "Admin": 0,        // 管理员用户ID（数字ID）（可以先不设）
-    "Token": "",       // 机器人Token
-    "Lang": "zh"       // 语言包名称
+    "Admin": 0,        //管理员用户ID（数字ID）（可以先不设）
+    "Token": "",       //机器人Token
+    "Lang": "zh"       //语言包名称
 }
 ```
 如果在前一步未设置管理员用户ID，第一个对机器人发送`/setadmin`的用户将成为管理员，之后可通过修改`config.json`修改管理员
@@ -25,9 +25,9 @@ Telegram Private Message Chat Bot
 Open `config.json` and configure
 ```json
 {
-    "Admin": 0,        // Admin ID (A digital ID)
-    "Token": "",       // Bot Token
-    "Lang": "en"       // Language Pack Name (Be careful! It's "en"!)
+    "Admin": 0,        //Admin ID (A digital ID)
+    "Token": "",       //Bot Token
+    "Lang": "en"       //Language Pack Name (Be careful! It's "en"!)
 }
 ```
 If you didn't set admin's ID previously, the user who sends `/setadmin` to the bot firstly will become the admin. You can edit `config.json` to change admin later.
