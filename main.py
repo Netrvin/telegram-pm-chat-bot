@@ -14,7 +14,7 @@ import threading
 reload(sys)
 sys.setdefaultencoding('utf8')
 
-Version_Code = 'v1.0.1' # 版本号
+Version_Code = 'v1.0.2' # 版本号
 
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
@@ -87,25 +87,25 @@ def process_msg(bot, update):   # 处理消息
         bot.send_message(chat_id=update.message.from_user.id,text=LANG['please_setup_first'])
         return
     if update.message.from_user.id == CONFIG['Admin']:  # 如果是管理员发送的消息
-        if update.message.reply_to_message != None: # 如果未回复消息
+        if update.message.reply_to_message: # 如果未回复消息
             if message_list.has_key(str(update.message.reply_to_message.message_id)):   # 如果消息数据存在
                 msg = update.message
                 sender_id = message_list[str(update.message.reply_to_message.message_id)]['sender_id']
                 # 匿名转发
                 try:
-                    if msg.audio != None:
+                    if msg.audio:
                         bot.send_audio(chat_id=sender_id,audio=msg.audio, caption=msg.caption)
-                    elif msg.document != None:
+                    elif msg.document:
                         bot.send_document(chat_id=sender_id,document=msg.document,caption=msg.caption)
-                    elif msg.voice != None:
+                    elif msg.voice:
                         bot.send_voice(chat_id=sender_id,voice=msg.voice, caption=msg.caption)
-                    elif msg.video != None:
+                    elif msg.video:
                         bot.send_video(chat_id=sender_id,video=msg.video, caption=msg.caption)
-                    elif msg.sticker != None:
+                    elif msg.sticker:
                         bot.send_sticker(chat_id=sender_id, sticker=update.message.sticker)
                     elif msg.photo:
                         bot.send_photo(chat_id=sender_id,photo=msg.photo[0], caption=msg.caption)
-                    elif msg.text_markdown != None:
+                    elif msg.text_markdown:
                         bot.send_message(chat_id=sender_id,text=msg.text_markdown,parse_mode=telegram.ParseMode.MARKDOWN)
                     else:
                         bot.send_message(chat_id=CONFIG['Admin'],text=LANG['reply_type_not_supported'])
@@ -124,7 +124,7 @@ def process_msg(bot, update):   # 处理消息
             bot.send_message(chat_id=CONFIG['Admin'],text=LANG['reply_to_no_message'])
     else:   # 如果不是管理员发送的消息
         fwd_msg = bot.forward_message(chat_id=CONFIG['Admin'], from_chat_id=update.message.chat_id, message_id=update.message.message_id)   # 转发消息
-        if fwd_msg.sticker != None: # 如果是贴纸，则发送发送者身份提示
+        if fwd_msg.sticker: # 如果是贴纸，则发送发送者身份提示
             bot.send_message(chat_id=CONFIG['Admin'],text=LANG['info_data'] % (update.message.from_user.full_name,str(update.message.from_user.id)),parse_mode=telegram.ParseMode.MARKDOWN,reply_to_message_id=fwd_msg.message_id)
         if preference_list[str(update.message.from_user.id)]['notification']:   # 如果启用消息发送提示
             bot.send_message(chat_id=update.message.from_user.id,text=LANG['message_received_notification'])
@@ -168,7 +168,7 @@ def process_command(bot, update):   #处理指令
             bot.send_message(chat_id=update.message.chat_id,text=LANG['togglenotification_off'])
     elif command[0] == 'info':  # 发送者信息
         if (update.message.from_user.id == CONFIG['Admin']) and (update.message.chat_id == CONFIG['Admin']):
-            if update.message.reply_to_message != None:
+            if update.message.reply_to_message:
                 if message_list.has_key(str(update.message.reply_to_message.message_id)):
                     sender_id=message_list[str(update.message.reply_to_message.message_id)]['sender_id']
                     bot.send_message(chat_id=update.message.chat_id,text=LANG['info_data'] % (preference_list[str(sender_id)]['name'],str(sender_id)),parse_mode=telegram.ParseMode.MARKDOWN,reply_to_message_id=update.message.reply_to_message.message_id)
