@@ -1,5 +1,5 @@
 {
-    "start": "欢迎使用本Bot，您所发送的消息均会被转发给我的主人\n输入指令  /togglenotification 可开启/关闭消息发送提示",
+    "start": "欢迎使用本Bot，您所发送的消息均会被转发给我的主人\n输入指令  /togglenotification 可开启/关闭消息发送提示，默认关闭",
     "set_admin_successful": "您已被成功设置为管理员",
     "set_admin_failed": "已设置管理员，请修改config.json手动修改",
     "togglenotification_on": "已开启消息发送提示，机器人将会在接受到你的消息时进行反馈",

@@ -1,0 +1,16 @@
+{
+    "start": "Welcome to use this bot. All your messages sent to me will be forwarder to the admin.\nEnter command /togglenotification can toggle message sending notification status, off by default.",
+    "set_admin_successful": "You have been set as the admin successfully.",
+    "set_admin_failed": "The admin has been set. Please edit config.json to edit it manually.",
+    "togglenotification_on": "Enabled message sending notification. The bot will give a feedback when it receives your message.",
+    "togglenotification_off": "Disabled message sending notification. The bot will not give a feedback when it receives your message.",
+    "info_data": "Sender：%s [Link](tg://user?id=%s)",
+    "message_received_notification": "Your message has been forwarded to the admin.",
+    "reply_to_no_message": "Please reply to a message.",
+    "reply_to_message_no_data": "No data of this message. Cannot inquire or reply.",
+    "reply_type_not_supported": "Do not support to reply the user this type of message.",
+    "reply_message_sent": "Replied.\nReceiver：%s [Link](tg://user?id=%s)",
+    "please_setup_first": "Please complete the configuration first.",
+    "blocked_alert": "This user stopped the bot so you cannot reply.",
+    "reply_message_failed": "Failed to reply, please retry."
+}
