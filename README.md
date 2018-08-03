@@ -36,7 +36,7 @@ Open `config.json` and configure
     "//3": "Language Pack Name (Be careful! It's 'en'!)"
 }
 ```
-If you didn't set admin's ID previously, the user who sends `/setadmin` to the bot firstly will become the admin. You can edit `config.json` to change admin later.
+If you didn't set admin's ID previously, the user who sends `/setadmin` to the bot first will become the admin. You can edit `config.json` to change admin later.
 
 ## 运行 (Run)
 ```
