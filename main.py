@@ -14,7 +14,7 @@ import threading
 reload(sys)
 sys.setdefaultencoding('utf8')
 
-Version_Code = 'v1.0.2'  # 版本号
+Version_Code = 'v1.0.3'  # 版本号
 
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
@@ -66,7 +66,7 @@ def save_config():  # 保存配置
 
 def init_user(user):  # 初始化用户
     global preference_list
-    if not preference_list.has_key(str(user.id)):  # 如果用户是第一次使用Bot
+    if not str(user.id) in preference_list:  # 如果用户是第一次使用Bot
         preference_list[str(user.id)] = {}
         preference_list[str(user.id)]['notification'] = False  # 默认关闭消息发送提示
         preference_list[str(user.id)]['name'] = user.full_name  # 保存用户昵称
@@ -84,8 +84,8 @@ me = updater.bot.get_me()
 CONFIG['ID'] = me.id
 CONFIG['Username'] = '@' + me.username
 
-print 'Starting... (ID: ' + str(CONFIG['ID']) + ', Username: ' \
-    + CONFIG['Username'] + ')'
+print('Starting... (ID: ' + str(CONFIG['ID']) + ', Username: ' \
+    + CONFIG['Username'] + ')')
 
 
 def process_msg(bot, update):  # 处理消息
@@ -97,7 +97,7 @@ def process_msg(bot, update):  # 处理消息
         return
     if update.message.from_user.id == CONFIG['Admin']:  # 如果是管理员发送的消息
         if update.message.reply_to_message:  # 如果未回复消息
-            if message_list.has_key(str(update.message.reply_to_message.message_id)):  # 如果消息数据存在
+            if str(update.message.reply_to_message.message_id) in message_list:  # 如果消息数据存在
                 msg = update.message
                 sender_id = \
                     message_list[str(update.message.reply_to_message.message_id)]['sender_id'
@@ -263,10 +263,10 @@ dispatcher.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.command
                        & telegram.ext.Filters.private, process_command))  # 处理指令
 
 updater.start_polling()  # 开始轮询
-print 'Started'
+print('Started')
 updater.idle()
-print 'Stopping...'
+print('Stopping...')
 save_data()  # 保存消息数据
 save_preference()  # 保存用户资料与设置
-print 'Data saved.'
-print 'Stopped.'
+print('Data saved.')
+print('Stopped.')
