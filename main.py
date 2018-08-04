@@ -133,7 +133,7 @@ def process_msg(bot, update):  # 处理消息
                         bot.send_message(chat_id=CONFIG['Admin'],
                                 text=LANG['reply_type_not_supported'])
                         return
-                except Exception, e:
+                except Exception as e:
                     if e.message \
                         == 'Forbidden: bot was blocked by the user':
                         bot.send_message(chat_id=CONFIG['Admin'],
