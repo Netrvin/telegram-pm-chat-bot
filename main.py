@@ -11,9 +11,6 @@ import os
 import logging
 import threading
 
-reload(sys)
-sys.setdefaultencoding('utf8')
-
 Version_Code = 'v1.0.3'  # 版本号
 
 logging.basicConfig(level=logging.INFO,
