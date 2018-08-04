@@ -38,6 +38,11 @@ Open `config.json` and configure
 ```
 If you didn't set admin's ID previously, the user who sends `/setadmin` to the bot first will become the admin. You can edit `config.json` to change admin later.
 
+## 升级 (Upgrade)
+替换`main.py`和`lang`文件夹，重新运行即可
+
+Replace `main.py` and folder `lang`, then run `main.py`
+
 ## 运行 (Run)
 ```
 python main.py
@@ -68,17 +73,30 @@ Effect:
 * For admin: After replying to the user, if there is no error, it will not prompt "replied"
 * For users: After sending a message, the bot will not reply "received"
 
-## 可用指令 (Available commands)
-| Command             | 用途                   |
-| :---                | :---                   |
-| /ping               | 确认机器人是否正在运行   |
-| /setadmin           | 设置当前用户为管理员     |
-| /togglenotification | 切换消息发送提示开启状态 |
-| /info               | 查询用户身份            |
+### 封禁与解禁 (Ban and unban)
+向一条消息回复`/ban`可禁止其发送者再次发送消息
 
-| Command             | Usage                                      |
-| :---                | :---                                       |
-| /ping               | Check if the bot is running                |
-| /setadmin           | Set the current user as admin              |
-| /togglenotification | Toggle message sending notification status |
-| /info               | Inquire sender identity                    |
+向一条消息回复`/unban`或发送`/unban <数字ID>`可解除对此用户的封禁
+
+Reply `/ban` to a message to block the sender of the message from sending messages to you
+
+Reply `unban` to a message or send `/unban <User ID>` to unban a user
+
+## 可用指令 (Available commands)
+| Command                   | 用途                   |
+| :---                      | :---                   |
+| /ping                     | 确认机器人是否正在运行   |
+| /setadmin                 | 设置当前用户为管理员     |
+| /togglenotification       | 切换消息发送提示开启状态 |
+| /info                     | 查询用户身份            |
+| /ban                      | 封禁用户                |
+| /unban <数字ID (可选)>     | 解封用户                |
+
+| Command                | Usage                                      |
+| :---                   | :---                                       |
+| /ping                  | Check if the bot is running                |
+| /setadmin              | Set the current user as admin              |
+| /togglenotification    | Toggle message sending notification status |
+| /info                  | Inquire sender identity                    |
+| /ban                   | Ban a user                                 |
+| /unban <ID (optional)> | Unban a user                               |

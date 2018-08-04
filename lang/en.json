@@ -12,5 +12,13 @@
     "reply_message_sent": "Replied.\nReceiver：%s [Link](tg://user?id=%s)",
     "please_setup_first": "Please complete the configuration first.",
     "blocked_alert": "This user stopped the bot so you cannot reply.",
-    "reply_message_failed": "Failed to reply, please retry."
+    "reply_message_failed": "Failed to reply, please retry.",
+    "be_blocked_alert": "You won't be able to send messages to the admin because you have been banned.",
+    "ban_user": "User %s [Link](tg://user?id=%s)\nHas been banned.",
+    "unban_user": "User %s [Link](tg://user?id=%s)\nHas been unbanned.",
+    "nonexistent_command": "Command not found.",
+    "not_an_admin": "You have no permission.",
+    "reply_or_enter_id": "Please reply to a message or enter the ID of the user who has been banned.",
+    "user_not_found": "User not found.",
+    "be_unbanned": "You have been unbanned."
 }

@@ -7,10 +7,18 @@
     "info_data": "发送者：%s [链接](tg://user?id=%s)",
     "message_received_notification": "您的消息已被转发给我的主人",
     "reply_to_no_message": "请回复一条消息",
-    "reply_to_message_no_data": "无本消息的数据，无法查询或回复",
+    "reply_to_message_no_data": "无本消息的数据，无法查询、回复或封禁",
     "reply_type_not_supported": "暂不支持回复当前类型的消息",
     "reply_message_sent": "消息已回复\n接收者：%s [链接](tg://user?id=%s)",
     "please_setup_first": "请先完成机器人配置",
     "blocked_alert": "此用户已停用机器人，无法回复",
-    "reply_message_failed": "回复消息失败，请重试"
+    "reply_message_failed": "回复消息失败，请重试",
+    "be_blocked_alert": "您已被封禁，将无法向我的主人发送消息",
+    "ban_user": "用户 %s [链接](tg://user?id=%s)\n已被封禁",
+    "unban_user": "用户 %s [链接](tg://user?id=%s)\n已被解禁",
+    "nonexistent_command": "此指令不存在",
+    "not_an_admin": "您不是管理员",
+    "reply_or_enter_id": "请回复一条消息或输入被封禁者ID",
+    "user_not_found": "无此用户",
+    "be_unbanned": "您已被解除封禁"
 }
