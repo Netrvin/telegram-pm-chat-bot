@@ -6,10 +6,10 @@ Telegram Private Message Chat Bot
 
 ### 安装准备 (Preparation)
 * 创建Telegram机器人，获取Token
-* 一台外面的服务器，安装好Python 2和pip，并运行指令`pip install python-telegram-bot --upgrade`
+* 一台外面的服务器，安装好Python和pip，并用pip安装`python-telegram-bot`
 
 * Create a bot and get its token
-* Install Python 2 and pip, then run command `pip install python-telegram-bot --upgrade`
+* Install Python and pip, then use pip to install `python-telegram-bot`
 
 ### 配置 (Configuration)
 打开`config.json`并配置
