@@ -231,7 +231,7 @@ def process_command(bot, update):  # 处理指令
         if update.message.from_user.id == CONFIG['Admin'] \
             and update.message.chat_id == CONFIG['Admin']:
             if update.message.reply_to_message:
-                if message_list.has_key(str(update.message.reply_to_message.message_id)):
+                if str(update.message.reply_to_message.message_id) in message_list:
                     sender_id = \
                         message_list[str(update.message.reply_to_message.message_id)]['sender_id'
                             ]
