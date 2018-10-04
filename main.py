@@ -42,7 +42,6 @@ def save_data():  # 保存消息数据
     f.close()
     MESSAGE_LOCK = False
 
-
 def save_preference():  # 保存用户资料与设置
     global PREFERENCE_LOCK
     while PREFERENCE_LOCK:
@@ -53,12 +52,10 @@ def save_preference():  # 保存用户资料与设置
     f.close()
     PREFERENCE_LOCK = False
 
-
 def save_config():  # 保存配置
     f = open(PATH + 'config.json', 'w')
     f.write(json.dumps(CONFIG, indent=4))
     f.close()
-
 
 def init_user(user):  # 初始化用户
     global preference_list
@@ -84,7 +81,6 @@ CONFIG['Username'] = '@' + me.username
 
 print('Starting... (ID: ' + str(CONFIG['ID']) + ', Username: ' \
     + CONFIG['Username'] + ')')
-
 
 def process_msg(bot, update):  # 处理消息
     global message_list
