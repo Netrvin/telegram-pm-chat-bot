@@ -1,9 +1,9 @@
 # telegram-pm-chat-bot
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/ecee7fc9ba4f4ddba39c2fe8ce539d2a)](https://app.codacy.com/app/131/telegram-pm-chat-bot?utm_source=github.com&utm_medium=referral&utm_content=Netrvin/telegram-pm-chat-bot&utm_campaign=Badge_Grade_Dashboard)
-
 Telegram 私聊机器人
 Telegram Private Message Chat Bot
+
+**本项目已进入随缘更新状态，如您对使用 `.NET` 没有意见的话，可考虑使用 [pmcenter](https://github.com/Elepover/pmcenter) 作为PM机器人的解决方案**
 
 ## 安装 (Installation)
 
