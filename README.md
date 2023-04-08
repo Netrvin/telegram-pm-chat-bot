@@ -1,6 +1,6 @@
 # telegram-pm-chat-bot
 
-English | [简体中文](https://github.com/Netrvin/telegram-pm-chat-bot/blob/master/README_CN.md)
+English | [简体中文](/README_CN.md)
 
 This is a chatbot that allows users to have private conversations with you on Telegram. It is easy to set up and can be
 customized to suit your needs.
