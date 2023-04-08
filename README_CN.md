@@ -25,9 +25,9 @@
 
 ```json
 {
-  "Admin": 0,
-  "Token": "",
-  "Lang": "zh_cn"
+  "admin": 0,
+  "token": "",
+  "lang": "zh_cn"
 }
 ```
 
