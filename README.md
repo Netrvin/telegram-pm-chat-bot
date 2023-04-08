@@ -14,7 +14,7 @@ want to consider using [pmcenter](https://github.com/Elepover/pmcenter) instead.
 
 * Create a Telegram bot and get its token
 * Install Python and pip
-* Use pip to install python-telegram-bot==13.15, requests
+* Use pip to install `python-telegram-bot==13.15`, `requests`
 
 ### Configuration
 
@@ -25,6 +25,7 @@ Open `config.json` and configure
 - lang: language pack name (be careful, it should be 'en' or 'zh_cn' or 'zh_cn_moe')
 
 Initial value
+
 ```json
 {
   "admin": 0,
@@ -34,6 +35,7 @@ Initial value
 ```
 
 Example
+
 ```json
 {
   "admin": 5021485638,

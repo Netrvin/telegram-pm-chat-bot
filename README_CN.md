@@ -11,7 +11,7 @@
 
 * 创建一个 Telegram 机器人并获取其 Token
 * 安装 Python 和 pip
-* 使用 pip 安装 python-telegram-bot==13.15, requests
+* 使用 pip 安装 `python-telegram-bot==13.15`, `requests`
 
 ### 配置
 
