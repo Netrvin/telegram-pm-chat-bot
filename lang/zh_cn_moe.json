@@ -4,7 +4,7 @@
     "set_admin_failed": "咱已经有Master的说，不要换Master嘛\n咱才不说修改config.json就可以改的（小声）",
     "notification_on": "和咱说话的时候，咱会告诉你咱听到了的w",
     "notification_off": "和咱说话的时候，咱不会告诉你咱听到了哟ˋ( ° ▽、° ) ",
-    "info_data": "发送者：%s [链接](tg://user?id=%s)",
+    "info_data": "发送者: %s [链接](tg://user?id=%s)",
     "message_received_notification": "咱已经把你的话告诉Master了哦(●'◡'●)",
     "reply_to_no_message": "诶？Master要找谁的说？",
     "reply_to_message_no_data": "咦，这消息是谁发的，咱不知道诶，Master别打我好不好（〃｀ 3′〃）",
