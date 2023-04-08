@@ -1,105 +1,93 @@
 # telegram-pm-chat-bot
 
-Telegram 私聊机器人
-Telegram Private Message Chat Bot
+English | [简体中文](https://github.com/Netrvin/telegram-pm-chat-bot/blob/master/README_CN.md)
 
-**本项目已进入随缘更新状态，如您对使用 `.NET` 没有意见的话，可考虑使用 [pmcenter](https://github.com/Elepover/pmcenter) 作为PM机器人的解决方案**
+This is a chatbot that allows users to have private conversations with you on Telegram. It is easy to set up and can be
+customized to suit your needs.
 
-## 安装 (Installation)
+**Note**: This project is currently being updated in the developer's free time. If you do not mind using .NET, you may
+want to consider using [pmcenter](https://github.com/Elepover/pmcenter) instead.
 
-### 安装准备 (Preparation)
-* 创建Telegram机器人，获取Token
-* 一台外面的服务器，安装好Python和pip，并用pip安装`python-telegram-bot==11.1.0`
+## Installation
 
-* Create a bot and get its token
-* Install Python and pip, then use pip to install `python-telegram-bot==11.1.0`
+### Preparation
 
-### 配置 (Configuration)
-打开`config.json`并配置
-```json
-{
-    "Admin": 0,
-    "//1": "管理员用户ID（数字ID）（可以先不设）",
-    "Token": "",
-    "//2": "机器人Token",
-    "Lang": "zh",
-    "//3": "语言包名称"
-}
-```
-如果在前一步未设置管理员用户ID，第一个对机器人发送`/setadmin`的用户将成为管理员，之后可通过修改`config.json`修改管理员
+* Create a Telegram bot and get its token
+* Install Python and pip
+* Use pip to install python-telegram-bot==13.15
+
+### Configuration
 
 Open `config.json` and configure
+
+- admin: admin ID (a numeric ID)
+- token: bot token
+- lang: language pack name (be careful, it should be 'en' or 'zh_cn' or 'zh_cn_moe')
+
+Initial value
 ```json
 {
-    "Admin": 0,
-    "//1": "Admin ID (A digital ID)",
-    "Token": "",
-    "//2": "Bot Token",
-    "Lang": "en",
-    "//3": "Language Pack Name (Be careful! It's 'en'!)"
+  "admin": 0,
+  "token": "",
+  "lang": "en"
 }
 ```
-If you didn't set admin's ID previously, the user who sends `/setadmin` to the bot first will become the admin. You can edit `config.json` to change admin later.
 
-## 升级 (Upgrade)
-替换`main.py`和`lang`文件夹，重新运行即可
+Example
+```json
+{
+  "admin": 5021485638,
+  "token": "5775925834:AAHDw2Pt-7TeLEY4c6PjtJnbHiR4N1q8Dmk",
+  "lang": "en"
+}
+```
 
-Replace `main.py` and folder `lang`, then run `main.py`
+If you didn't set admin's ID previously, the user who sends `/setadmin` to the bot first will become the admin. You can
+edit `config.json` to change admin later.
 
-## 运行 (Run)
+## Run The Bot
+
+Run the bot by executing the following command in the project directory
+
 ```
 python main.py
 ```
 
-## 使用 (Usage)
+## Usage
 
-### 回复 (Reply)
-直接回复机器人转发过来的消息即可回复，支持文字、贴纸、图片、文件、音频和视频
+### Reply to bot a message
 
-Reply directly to the message forwarded by the robot to reply. You can reply text, sticker, photo, file, audio, voice and video.
+Reply directly to the message forwarded by the robot to reply. You can reply text, sticker, photo, file, audio, voice
+and video.
 
-### 查询用户身份 (Inquire sender identity)
-部分转发来的消息不便于查看发送者身份，可以通过回复该消息`/info`查询
+### Inquire sender identity
 
 You can reply `/info` to the message which you want to get its sender's info more clearly.
 
-### 消息发送提示 (Message sending notification)
-向机器人发送指令`/togglenotification`可开启/关闭消息发送提示
+### Message sending notification
 
-效果：
-* 对管理员：回复用户后，如无出错则不会提示“已回复”
-* 对用户：发送消息后，机器人不会回复“已收到”
-
-Send the command `/togglenotification` to the bot to enable/disable the message sending notification
+Send the command `/notification` to the bot to enable or disable the message sending notification
 
 Effect:
+
 * For admin: After replying to the user, if there is no error, it will not prompt "replied"
 * For users: After sending a message, the bot will not reply "received"
 
-### 封禁与解禁 (Ban and unban)
-向一条消息回复`/ban`可禁止其发送者再次发送消息
-
-向一条消息回复`/unban`或发送`/unban <数字ID>`可解除对此用户的封禁
+### Ban and unban
 
 Reply `/ban` to a message to block the sender of the message from sending messages to you
 
-Reply `unban` to a message or send `/unban <User ID>` to unban a user
+Reply `/unban` to a message or send `/unban <User ID>` to unban a user
 
-## 可用指令 (Available commands)
-| Command                   | 用途                   |
-| :---                      | :---                   |
-| /ping                     | 确认机器人是否正在运行   |
-| /setadmin                 | 设置当前用户为管理员     |
-| /togglenotification       | 切换消息发送提示开启状态 |
-| /info                     | 查询用户身份            |
-| /ban                      | 封禁用户                |
-| /unban <数字ID (可选)>     | 解封用户                |
+## Available commands
 
-| Command                | Usage                                      |
-| :---                   | :---                                       |
-| /ping                  | Check if the bot is running                |
-| /setadmin              | Set the current user as admin              |
-| /togglenotification    | Toggle message sending notification status |
-| /info                  | Inquire sender identity                    |
-| /ban                   | Ban a user                                 |
-| /unban <ID (optional)> | Unban a user                               |
+| Command           | Usage                                      |
+|:------------------|:-------------------------------------------|
+| /start            | Start the bot                              |
+| /help             | Show help message                          |
+| /ping             | Check if the bot is running                |
+| /setadmin         | Set the current user as admin              |
+| /notification     | Toggle message sending notification status |
+| /info             | Inquire sender identity                    |
+| /ban              | Ban a user                                 |
+| /unban \<User ID> | Unban a user                               |
