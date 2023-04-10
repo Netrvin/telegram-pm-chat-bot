@@ -51,9 +51,7 @@ edit `config.json` to change admin later.
 
 Run the bot by executing the following command in the project directory
 
-```
-python main.py
-```
+`python main.py` or `python3 main.py`
 
 ## Usage
 

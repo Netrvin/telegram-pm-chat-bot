@@ -2,10 +2,10 @@ import threading
 
 import telegram
 from telegram import Update
-from telegram.ext import CallbackContext
+from telegram.ext import CallbackContext, Filters, MessageHandler
 
-from settings import init_user, CONFIG, message_list, LANG, preference_list, save_data, VERSION, save_config, \
-    save_preference
+from settings import init_user, message_list, preference_list, save_config, save_data, save_preference, \
+    CONFIG, LANG, VERSION
 
 
 # process message
@@ -112,7 +112,7 @@ def process_command(update: Update, context: CallbackContext):
                                  )
 
     elif command[0] == 'setadmin':  # set admin
-        if CONFIG['admin'] == 0:  # judge if admin is set
+        if CONFIG['admin'] == 0:
             CONFIG['admin'] = int(id)
             save_config()
             context.bot.send_message(chat_id=msg.chat_id, text=LANG['set_admin_successful'])
@@ -188,9 +188,8 @@ def process_command(update: Update, context: CallbackContext):
                 if command[1] in preference_list:
                     preference_list[command[1]]['blocked'] = False
                     context.bot.send_message(chat_id=msg.chat_id,
-                                             text=LANG['unban_user']
-                                                  % (preference_list[command[1]]['name'],
-                                                     command[1]),
+                                             text=LANG['unban_user'] % (preference_list[command[1]]['name'],
+                                                                        command[1]),
                                              parse_mode=telegram.ParseMode.MARKDOWN)
                     context.bot.send_message(chat_id=int(command[1]), text=LANG['be_unbanned'])
                 else:
@@ -200,18 +199,18 @@ def process_command(update: Update, context: CallbackContext):
         else:
             context.bot.send_message(chat_id=msg.chat_id, text=LANG['not_an_admin'])
 
-    else:  # 指令不存在
+    else:
         context.bot.send_message(chat_id=msg.chat_id, text=LANG['nonexistent_command'])
 
 
 # add handlers
 def setup_dispatcher(dp):
-    dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.all
-                                               & telegram.ext.Filters.chat_type.private
-                                               & ~telegram.ext.Filters.command
-                                               & ~telegram.ext.Filters.status_update,
-                                               process_msg))
+    dp.add_handler(MessageHandler(Filters.all
+                                  & Filters.chat_type.private
+                                  & ~Filters.command
+                                  & ~Filters.status_update,
+                                  process_msg))
 
-    dp.add_handler(telegram.ext.MessageHandler(telegram.ext.Filters.command
-                                               & telegram.ext.Filters.chat_type.private,
-                                               process_command))
+    dp.add_handler(MessageHandler(Filters.command
+                                  & Filters.chat_type.private,
+                                  process_command))

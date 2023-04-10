@@ -47,9 +47,7 @@
 
 在项目目录下执行以下命令即可运行机器人
 
-```
-python main.py
-```
+`python main.py` or `python3 main.py`
 
 ## 使用
 
