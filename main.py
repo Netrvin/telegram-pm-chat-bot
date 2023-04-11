@@ -1,13 +1,13 @@
 import logging
 
-import telegram.ext
+from telegram.ext import Updater
 
 from handlers import setup_dispatcher
 from settings import CONFIG, setup_logging, save_data, save_preference, setup_commands
 
 
 def setup_bot():
-    updater = telegram.ext.Updater(token=CONFIG['token'], use_context=True)
+    updater = Updater(token=CONFIG['token'], use_context=True)
     dp = updater.dispatcher
     setup_dispatcher(dp)
 

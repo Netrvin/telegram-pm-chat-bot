@@ -11,7 +11,7 @@ VERSION = 'v2.0'
 PATH = os.path.dirname(os.path.realpath(__file__)) + '/'
 
 # Load configuration file
-CONFIG = json.loads(open(PATH + 'config.json', 'r').read())
+CONFIG = json.loads(open(PATH + 'data/' + 'config.json', 'r').read())
 
 # Load language file
 LANG = json.loads(open(PATH + 'lang/' + CONFIG['lang'] + '.json', encoding='utf-8').read())
@@ -21,19 +21,18 @@ message_lock = threading.Lock()
 preference_lock = threading.Lock()
 
 # Load message data
-message_list = json.loads(open(PATH + 'data.json', 'r').read())
+message_list = json.loads(open(PATH + 'data/' + 'data.json', 'r').read())
 
 # Load user profiles and settings
-preference_list = json.loads(open(PATH + 'preference.json', 'r').read())
+preference_list = json.loads(open(PATH + 'data/' + 'preference.json', 'r').read())
 
 
 def save_data():
     """
     Save message data to file in a thread-safe manner
     """
-
     with message_lock:
-        with open(PATH + 'data.json', 'w') as f:
+        with open(PATH + 'data/' + 'data.json', 'w') as f:
             json.dump(message_list, f, indent=4)
 
 
@@ -42,7 +41,7 @@ def save_preference():
     Save user profiles and settings to file in a thread-safe manner
     """
     with preference_lock:
-        with open(PATH + 'preference.json', 'w') as f:
+        with open(PATH + 'data/' + 'preference.json', 'w') as f:
             json.dump(preference_list, f, indent=4)
 
 
@@ -50,7 +49,7 @@ def save_config():
     """
     Save configuration to file
     """
-    with open(PATH + 'config.json', 'w') as f:
+    with open(PATH + 'data/' + 'config.json', 'w') as f:
         json.dump(CONFIG, f, indent=4)
 
 
@@ -80,7 +79,6 @@ def setup_logging():
     """
     Set up logging configuration
     """
-
     logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 
@@ -88,7 +86,6 @@ def setup_commands():
     """
     Set up bot commands
     """
-
     commands = [
         {'command': 'start', 'description': 'Start the bot'},
         {'command': 'help', 'description': 'Show help information'},

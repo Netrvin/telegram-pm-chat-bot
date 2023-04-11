@@ -1,5 +1,5 @@
 {
-    "start": "Welcome to use this bot. All your messages sent to me will be forwarder to the admin.\nEnter command /notification can toggle message sending notification status, off by default.",
+    "start": "Welcome to use this bot. All your messages sent to me will be forwarded to the admin.\nEnter command /notification can toggle message sending notification status, off by default.",
     "set_admin_successful": "You have been set as the admin successfully.",
     "set_admin_failed": "The admin has been set. Please edit config.json to edit it manually.",
     "notification_on": "Enabled message sending notification. The bot will give a feedback when it receives your message.",

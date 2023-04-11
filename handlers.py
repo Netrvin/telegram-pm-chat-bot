@@ -1,7 +1,6 @@
 import threading
 
-import telegram
-from telegram import Update
+from telegram import Update, ParseMode
 from telegram.ext import CallbackContext, Filters, MessageHandler
 
 from settings import init_user, message_list, preference_list, save_config, save_data, save_preference, \
@@ -35,7 +34,7 @@ def process_msg(update: Update, context: CallbackContext):
                     'sticker': context.bot.send_sticker,
                     'photo': context.bot.send_photo,
                     'text_markdown': lambda chat_id, text: context.bot.send_message(chat_id=chat_id, text=text,
-                                                                                    parse_mode=telegram.ParseMode.MARKDOWN)
+                                                                                    parse_mode=ParseMode.MARKDOWN)
                 }
 
                 msg_type = next((key for key in msg_type_handlers.keys() if getattr(msg, key, None)), None)
@@ -62,7 +61,7 @@ def process_msg(update: Update, context: CallbackContext):
                     context.bot.send_message(chat_id=msg.chat_id,
                                              text=LANG['reply_message_sent'] % (preference_list[str(sender_id)]['name'],
                                                                                 str(sender_id)),
-                                             parse_mode=telegram.ParseMode.MARKDOWN)
+                                             parse_mode=ParseMode.MARKDOWN)
 
             else:
                 context.bot.send_message(chat_id=CONFIG['admin'],
@@ -82,7 +81,7 @@ def process_msg(update: Update, context: CallbackContext):
             context.bot.send_message(chat_id=CONFIG['admin'],
                                      text=LANG['info_data'] % (update.effective_user.full_name,
                                                                str(id)),
-                                     parse_mode=telegram.ParseMode.MARKDOWN,
+                                     parse_mode=ParseMode.MARKDOWN,
                                      reply_to_message_id=fwd_msg.message_id)
 
         if preference_list[str(id)]['notification']:  # if notification is enabled, send notification
@@ -99,8 +98,8 @@ def process_command(update: Update, context: CallbackContext):
     init_user(update.effective_user)
     id = update.effective_user.id
     msg = update.effective_message
-
     command = msg.text[1:].replace(CONFIG['username'], '').lower().split()
+
     if command[0] == 'start':
         context.bot.send_message(chat_id=msg.chat_id, text=LANG['start'])
 
@@ -137,7 +136,7 @@ def process_command(update: Update, context: CallbackContext):
                     context.bot.send_message(chat_id=msg.chat_id,
                                              text=LANG['info_data'] % (preference_list[str(sender_id)]['name'],
                                                                        str(sender_id)),
-                                             parse_mode=telegram.ParseMode.MARKDOWN,
+                                             parse_mode=ParseMode.MARKDOWN,
                                              reply_to_message_id=msg.reply_to_message.message_id)
                 else:
                     context.bot.send_message(chat_id=msg.chat_id,
@@ -161,7 +160,7 @@ def process_command(update: Update, context: CallbackContext):
                     context.bot.send_message(chat_id=msg.chat_id,
                                              text=LANG['ban_user'] % (preference_list[str(sender_id)]['name'],
                                                                       str(sender_id)),
-                                             parse_mode=telegram.ParseMode.MARKDOWN)
+                                             parse_mode=ParseMode.MARKDOWN)
                     context.bot.send_message(chat_id=sender_id, text=LANG['be_blocked_alert'])
                 else:
                     context.bot.send_message(chat_id=msg.chat_id, text=LANG['reply_to_message_no_data'])
@@ -180,7 +179,7 @@ def process_command(update: Update, context: CallbackContext):
                                              text=LANG['unban_user']
                                                   % (preference_list[str(sender_id)]['name'],
                                                      str(sender_id)),
-                                             parse_mode=telegram.ParseMode.MARKDOWN)
+                                             parse_mode=ParseMode.MARKDOWN)
                     context.bot.send_message(chat_id=sender_id, text=LANG['be_unbanned'])
                 else:
                     context.bot.send_message(chat_id=msg.chat_id, text=LANG['reply_to_message_no_data'])
@@ -190,7 +189,7 @@ def process_command(update: Update, context: CallbackContext):
                     context.bot.send_message(chat_id=msg.chat_id,
                                              text=LANG['unban_user'] % (preference_list[command[1]]['name'],
                                                                         command[1]),
-                                             parse_mode=telegram.ParseMode.MARKDOWN)
+                                             parse_mode=ParseMode.MARKDOWN)
                     context.bot.send_message(chat_id=int(command[1]), text=LANG['be_unbanned'])
                 else:
                     context.bot.send_message(chat_id=msg.chat_id, text=LANG['user_not_found'])
