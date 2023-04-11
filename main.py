@@ -19,11 +19,11 @@ def main():
     setup_logging()
 
     # Set up bot
-    setup_bot()
+    updater = setup_bot()
     setup_commands()
 
     # Retrieve bot information
-    me = setup_bot().bot.get_me()
+    me = updater.bot.get_me()
     CONFIG['id'] = me.id
     CONFIG['username'] = '@' + me.username
 
@@ -32,9 +32,9 @@ def main():
 
     # Start polling
     try:
-        setup_bot().start_polling()
+        updater.start_polling()
         logging.info('Started')
-        setup_bot().idle()
+        updater.idle()
     except Exception as e:
         logging.error('Exception occurred: %s', str(e))
 
