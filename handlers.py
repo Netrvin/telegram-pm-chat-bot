@@ -26,27 +26,35 @@ def process_msg(update: Update, context: CallbackContext):
         if msg.reply_to_message:
             if str(msg.reply_to_message.message_id) in message_list:
                 sender_id = message_list[str(msg.reply_to_message.message_id)]['sender_id']
-                msg_type_handlers = {
-                    'audio': context.bot.send_audio,
-                    'document': context.bot.send_document,
-                    'voice': context.bot.send_voice,
-                    'video': context.bot.send_video,
-                    'sticker': context.bot.send_sticker,
-                    'photo': context.bot.send_photo,
-                    'text_markdown': lambda chat_id, text: context.bot.send_message(chat_id=chat_id, text=text,
-                                                                                    parse_mode=ParseMode.MARKDOWN)
-                }
-
-                msg_type = next((key for key in msg_type_handlers.keys() if getattr(msg, key, None)), None)
-
-                if not msg_type:
-                    context.bot.send_message(chat_id=CONFIG['admin'], text=LANG['reply_type_not_supported'])
-                    return
 
                 # anonymous forwarding
                 try:
-                    msg_type_handlers[msg_type](chat_id=sender_id,
-                                                **{msg_type: getattr(msg, msg_type), 'caption': msg.caption})
+                    if msg.audio:
+                        context.bot.send_audio(chat_id=sender_id,
+                                               audio=msg.audio, caption=msg.caption)
+                    elif msg.document:
+                        context.bot.send_document(chat_id=sender_id,
+                                                  document=msg.document,
+                                                  caption=msg.caption)
+                    elif msg.voice:
+                        context.bot.send_voice(chat_id=sender_id,
+                                               voice=msg.voice, caption=msg.caption)
+                    elif msg.video:
+                        context.bot.send_video(chat_id=sender_id,
+                                               video=msg.video, caption=msg.caption)
+                    elif msg.sticker:
+                        context.bot.send_sticker(chat_id=sender_id,
+                                                 sticker=update.message.sticker)
+                    elif msg.photo:
+                        context.bot.send_photo(chat_id=sender_id,
+                                               photo=msg.photo[0], caption=msg.caption)
+                    elif msg.text_markdown:
+                        context.bot.send_message(chat_id=sender_id,
+                                                 text=msg.text_markdown,
+                                                 parse_mode=ParseMode.MARKDOWN)
+                    else:
+                        context.bot.send_message(chat_id=CONFIG['admin'],
+                                                 text=LANG['reply_type_not_supported'])
 
                 except Exception as e:
                     if 'Forbidden: bot was blocked by the user' in str(e):
@@ -79,8 +87,7 @@ def process_msg(update: Update, context: CallbackContext):
 
         if fwd_msg.sticker:  # if forward message is sticker, send sender identity
             context.bot.send_message(chat_id=CONFIG['admin'],
-                                     text=LANG['info_data'] % (update.effective_user.full_name,
-                                                               str(id)),
+                                     text=LANG['info_data'] % (update.effective_user.full_name, str(id)),
                                      parse_mode=ParseMode.MARKDOWN,
                                      reply_to_message_id=fwd_msg.message_id)
 
