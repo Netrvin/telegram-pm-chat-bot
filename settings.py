@@ -33,7 +33,7 @@ def save_data():
     """
     with message_lock:
         with open(PATH + 'data/' + 'data.json', 'w') as f:
-            json.dump(message_list, f, indent=4)
+            json.dump(message_list, f)
 
 
 def save_preference():
@@ -42,7 +42,7 @@ def save_preference():
     """
     with preference_lock:
         with open(PATH + 'data/' + 'preference.json', 'w') as f:
-            json.dump(preference_list, f, indent=4)
+            json.dump(preference_list, f)
 
 
 def save_config():
