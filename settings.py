@@ -3,7 +3,7 @@ import logging
 import os
 import threading
 
-import requests
+from telegram import BotCommand, Bot
 
 VERSION = 'v2.0'
 
@@ -97,10 +97,7 @@ def setup_commands():
         {'command': 'unban', 'description': 'Unban a user'}
     ]
 
-    data = {'commands': commands}
-    url = f"https://api.telegram.org/bot{CONFIG['token']}/setMyCommands"
-    response = requests.post(url, data=json.dumps(data), headers={'Content-Type': 'application/json'})
-    if response.status_code == 200:
-        print('Commands set successfully')
-    else:
-        print('Failed to set commands:', response.text)
+    bot = Bot(token=CONFIG['token'])
+    bot_commands = [BotCommand(command['command'], command['description']) for command in commands]
+    bot.set_my_commands(bot_commands)
+    logging.info('Commands set up successfully')

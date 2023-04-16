@@ -34,8 +34,7 @@ def process_msg(update: Update, context: CallbackContext):
                                                audio=msg.audio, caption=msg.caption)
                     elif msg.document:
                         context.bot.send_document(chat_id=sender_id,
-                                                  document=msg.document,
-                                                  caption=msg.caption)
+                                                  document=msg.document, caption=msg.caption)
                     elif msg.voice:
                         context.bot.send_voice(chat_id=sender_id,
                                                voice=msg.voice, caption=msg.caption)
@@ -44,14 +43,13 @@ def process_msg(update: Update, context: CallbackContext):
                                                video=msg.video, caption=msg.caption)
                     elif msg.sticker:
                         context.bot.send_sticker(chat_id=sender_id,
-                                                 sticker=update.message.sticker)
+                                                 sticker=msg.sticker)
                     elif msg.photo:
                         context.bot.send_photo(chat_id=sender_id,
                                                photo=msg.photo[0], caption=msg.caption)
                     elif msg.text_markdown:
                         context.bot.send_message(chat_id=sender_id,
-                                                 text=msg.text_markdown,
-                                                 parse_mode=ParseMode.MARKDOWN)
+                                                 text=msg.text_markdown, parse_mode=ParseMode.MARKDOWN)
                     else:
                         context.bot.send_message(chat_id=CONFIG['admin'],
                                                  text=LANG['reply_type_not_supported'])

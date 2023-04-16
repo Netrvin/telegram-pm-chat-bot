@@ -14,7 +14,7 @@ want to consider using [pmcenter](https://github.com/Elepover/pmcenter) instead.
 
 * Create a Telegram bot and get its token
 * Install Python and pip
-* Use pip to install `python-telegram-bot==13.15`, `requests`
+* Use pip to install `python-telegram-bot==13.15.0`
 
 ### Configuration
 
