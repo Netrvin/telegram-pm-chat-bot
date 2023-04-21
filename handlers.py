@@ -12,9 +12,6 @@ def process_msg(update: Update, context: CallbackContext):
     init_user(update.effective_user)
     id = update.effective_user.id
     msg = update.effective_message
-    fwd_msg = context.bot.forward_message(chat_id=CONFIG['admin'],
-                                          from_chat_id=msg.chat_id,
-                                          message_id=msg.message_id)
 
     # if not admin
     if CONFIG['admin'] == 0:
@@ -82,7 +79,11 @@ def process_msg(update: Update, context: CallbackContext):
             context.bot.send_message(chat_id=id,
                                      text=LANG['be_blocked_alert'])
             return
-
+        
+        fwd_msg = context.bot.forward_message(chat_id=CONFIG['admin'],
+                                          from_chat_id=msg.chat_id,
+                                          message_id=msg.message_id)
+        
         if fwd_msg.sticker:  # if forward message is sticker, send sender identity
             context.bot.send_message(chat_id=CONFIG['admin'],
                                      text=LANG['info_data'] % (update.effective_user.full_name, str(id)),
